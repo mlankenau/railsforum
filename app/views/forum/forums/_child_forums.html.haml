@@ -1,0 +1,4 @@
+- if forum.subforums.count > 0
+  Sub forums
+  - forum.subforums.each do |subforum|
+    .sub_forum_title= link_to subforum.name, forum

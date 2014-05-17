@@ -1,0 +1,20 @@
+// Place all the styles related to the forum/forums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.forum_list {
+  width: 100%;
+
+  .header {
+    background: lightgrey;    
+  }
+
+  .forum_title {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .sub_forum_title {
+    display: inline-block;
+  }
+}

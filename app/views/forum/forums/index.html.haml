@@ -1,0 +1,21 @@
+%h1 Listing forum_forums
+
+%table.forum_list
+  %tr.header
+    %th Name
+    %th Last pos
+    %th Threads
+    %th Posts
+
+
+  - @forum_forums.each do |forum|
+    %tr.row
+      %td
+        .forum_title= link_to forum.name, forum
+        = render "child_forums", forum: forum
+      %td
+      %td
+      %td
+%br
+
+= link_to 'New Forum', new_forum_forum_path

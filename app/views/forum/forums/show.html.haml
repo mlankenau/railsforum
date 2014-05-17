@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Parent forum:
+  = @forum_forum.parent_forum_id
+%p
+  %b Name:
+  = @forum_forum.name
+%p
+  %b Pos:
+  = @forum_forum.pos
+%p
+  %b Moderator:
+  = @forum_forum.moderator
+
+= link_to 'Edit', edit_forum_forum_path(@forum_forum)
+\|
+= link_to 'Back', forum_forums_path
