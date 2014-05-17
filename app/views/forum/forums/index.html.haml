@@ -4,7 +4,7 @@
   %tr.header
     %th Name
     %th Last pos
-    %th Threads
+    %th.threads Threads
     %th Posts
 
 
@@ -14,7 +14,7 @@
         .forum_title= link_to forum.name, forum
         = render "child_forums", forum: forum
       %td
-      %td
+      %td= forum.thread_count
       %td
 %br
 
