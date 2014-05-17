@@ -23,7 +23,9 @@ describe Forum::ThreadsController do
   # This should return the minimal set of attributes required to create a valid
   # Forum::Thread. As you add validations to Forum::Thread, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "creator" => "1" } }
+  let(:forum) {Forum::Forum.create(name: 'test')}
+
+  let(:valid_attributes) { { "subject" => "Tralala", "forum_id" => forum.id } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
