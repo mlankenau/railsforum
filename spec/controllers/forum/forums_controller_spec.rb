@@ -23,7 +23,7 @@ describe Forum::ForumsController do
   # This should return the minimal set of attributes required to create a valid
   # Forum::Forum. As you add validations to Forum::Forum, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "parent_forum_id" => "1" } }
+  let(:valid_attributes) { { "name" => "Test" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
