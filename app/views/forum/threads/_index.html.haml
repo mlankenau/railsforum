@@ -1,0 +1,17 @@
+%table.thread_list
+  %tr.header
+    %th Subject
+    %th Last post
+    %th Replies
+    %th
+
+  - forum.threads.each do |thread|
+    %tr.row
+      %td= link_to thread.subject, thread
+      %td= thread.posts.any? ? thread.posts.last.created_at : ''
+      %td= thread.posts.any? ? thread.posts.count-1 : 0
+      %td
+
+%br
+
+= link_to 'New Thread', new_forum_thread_path
