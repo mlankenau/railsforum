@@ -19,8 +19,10 @@ forum_pm_kanban = Forum::Forum.create(name: 'Kanban', parent_forum_id:forum_pm.i
 forum_jobs = Forum::Forum.create(name: 'Jobs')
 forum_jobs_offers = Forum::Forum.create(name: 'Jobs', parent_forum_id:forum_jobs.id)
 
-
-
 thread1 = Forum::Thread.create(forum_id:forum_coding_ruby.id, subject:'Rails4')
 thread2 = Forum::Thread.create(forum_id:forum_coding_ruby.id, subject:'cancan')
 thread3 = Forum::Thread.create(forum_id:forum_coding_ruby.id, subject:'how to scaffold')
+
+thread1.posts.create(subject: 'What about Rails', body: 'Who knows about rails')
+thread1.posts.create(subject: 'What about Rails', body: 'What it the issue?')
+thread1.posts.create(subject: 'What about Rails', body: 'how to install')
