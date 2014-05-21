@@ -5,9 +5,9 @@ describe Forum::Forum do
 
   describe "parent child relationship" do
     before(:each) do
-      @parent = Forum::Forum.create(name:'parent')
-      @sub1 = Forum::Forum.create(name:'child1', parent_forum_id: @parent.id)
-      @sub2 = Forum::Forum.create(name:'child2', parent_forum_id: @parent.id)
+      @parent = create(:forum)
+      @sub1 = create(:forum, parentforum: @parent)
+      @sub2 = create(:forum, parentforum: @parent)
     end
 
     it "should list the childs" do
@@ -17,12 +17,12 @@ describe Forum::Forum do
 
   describe "forum relationship" do
     before(:each) do
-      @parent = Forum::Forum.create(name:'parent')
-      @thread1 = Forum::Thread.create(subject:'something', forum_id:@parent.id)
+      @parent = create(:forum)
+      @thread1 = create(:thread, subject:'something', forum:@parent)
     end
 
     it "should list the childs" do
-      expect(@parent.threads.count).to be(1)      
+      expect(@parent.threads.count).to be(1)
     end
 
     it "should be accessible for the child" do
@@ -31,26 +31,23 @@ describe Forum::Forum do
   end
 
 
-
-
   describe "validations" do
-
     it "should require a name with at least 2 characters" do
-      forum = Forum::Forum.new
+      forum = build(:forum, name: nil)
       expect(forum.valid?).to be(false)
-      forum.name = "a"
+      forum = build(:forum, name: 'a')
       expect(forum.valid?).to be(false)
-      forum.name = "ab"
+      forum = build(:forum, name: 'ab')
       expect(forum.valid?).to be(true)
     end
   end
 
   describe "thread count" do
     before(:each) do
-      @parent = Forum::Forum.create(name:'parent')
-      @sub1 = Forum::Forum.create(name:'child1', parent_forum_id: @parent.id)
-      @thread1 = Forum::Thread.create(subject:'something', forum_id:@parent.id)
-      @thread2 = Forum::Thread.create(subject:'something', forum_id:@sub1.id)
+      @parent = create(:forum)
+      @sub1 = create(:forum, parentforum: @parent)
+      @thread1 = create(:thread, forum:@parent)
+      @thread2 = create(:thread, subject:'something', forum:@sub1)
     end
 
     it "should count the number of threads" do

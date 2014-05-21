@@ -4,9 +4,9 @@ describe Forum::Thread do
 
   describe "post relationship" do
     before(:each) do
-      @parent = Forum::Forum.create(name:'parent')
-      @thread1 = Forum::Thread.create(subject:'something', forum_id:@parent.id)
-      @post1 = Forum::Post.create(subject:'something', thread_id: @thread1.id)
+      @parent = create(:forum)
+      @thread1 = create(:thread, forum:@parent)
+      @post1 = create(:post, thread: @thread1)
     end
 
     it "should list the childs" do
