@@ -23,7 +23,7 @@ describe Forum::PostsController do
   # This should return the minimal set of attributes required to create a valid
   # Forum::Post. As you add validations to Forum::Post, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "thread_id" => "1" } }
+  let(:valid_attributes) { attributes_for(:post) }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -32,7 +32,7 @@ describe Forum::PostsController do
 
   describe "GET index" do
     it "assigns all forum_posts as @forum_posts" do
-      post = Forum::Post.create! valid_attributes
+      post = create(:post)
       get :index, {}, valid_session
       expect(assigns(:forum_posts)).to eq([post])
     end
@@ -40,7 +40,7 @@ describe Forum::PostsController do
 
   describe "GET show" do
     it "assigns the requested forum_post as @forum_post" do
-      post = Forum::Post.create! valid_attributes
+      post = create(:post)
       get :show, {:id => post.to_param}, valid_session
       expect(assigns(:forum_post)).to eq(post)
     end
@@ -55,7 +55,7 @@ describe Forum::PostsController do
 
   describe "GET edit" do
     it "assigns the requested forum_post as @forum_post" do
-      post = Forum::Post.create! valid_attributes
+      post = create(:post)
       get :edit, {:id => post.to_param}, valid_session
       expect(assigns(:forum_post)).to eq(post)
     end
